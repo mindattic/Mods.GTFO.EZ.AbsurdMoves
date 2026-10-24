@@ -1,5 +1,13 @@
 # Changelog
 
+## v17
+
+- `GTFO.EZ.Shared` submodule bump: `SharedOwner.Order` no longer lists `GTFO.CrashTestDummies`,
+  which dropped Insert/Delete (and this submodule) in its own v17. No change in this mod's own
+  behavior.
+- `GTFO.CrashTestDummies` and `GTFO.SkipDrop` join the `vN` scheme this release, so every GTFO.*
+  mod now shares one version number.
+
 ## v16
 
 - **The Absurd Moves toggle moved from End to Home.** GTFO.EZ.AbsurdWeapons' own toggle moves the

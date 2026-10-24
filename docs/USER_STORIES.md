@@ -77,3 +77,4 @@ _Nothing recorded yet._
 | GAM-T54 | 2026-10-24 | chore | closed | Cut the v15 release: bump VERSION/manifest, move the End-toggle and Run Speed/Stamina-removal changelog entries from the already-shipped v14 into a new v15 section, rebuild and repackage dist/ | package/manifest.json |
 | GAM-T55 | 2026-10-24 | docs | closed | Reread and refresh README/package README: fix every Insert/Delete wording for the swap (Insert is now health, Delete is now ammo) | README.md |
 | GAM-T56 | 2026-10-24 | chore | closed | Cut the v16 release: Home replaces End as the Absurd Moves toggle, pull in GTFO.EZ.Shared's Insert/Delete swap (submodule bump), fix GTFO.* wording, rebuild and repackage dist/ | package/manifest.json |
+| GAM-T57 | 2026-10-24 | chore | closed | Cut the v17 release: bump submodule to GTFO.EZ.Shared's Order cleanup, join CrashTestDummies/SkipDrop into the vN scheme, bump VERSION/manifest, rebuild and repackage dist/ | package/manifest.json |

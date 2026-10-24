@@ -214,13 +214,13 @@ twice.
 ## Versioning
 
 v1, v2, v3... - major-only bumps, matching the convention across other MindAttic projects.
-Thunderstore requires `manifest.json`'s `version_number` to be strict `x.y.z`, so "v16" is `16.0.0`
+Thunderstore requires `manifest.json`'s `version_number` to be strict `x.y.z`, so "v17" is `17.0.0`
 (minor/patch stay 0). `package/CHANGELOG.md` headers use the short `vN` form.
 
 The GTFO.EZ family - GTFO.EZ, GTFO.EZ.AbsurdWeapons, GTFO.EZ.AbsurdMoves and GTFO.EZ.AbsurdItems -
 shares one version number, so a matching set is easy to spot: the companions' first release is
 **v13**, in step with GTFO.EZ (not v1), and every release of the family bumps all four together
-(current: v16).
+(current: v17).
 
 ## Building
 
