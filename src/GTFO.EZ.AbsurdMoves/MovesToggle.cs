@@ -51,12 +51,13 @@ internal static class MovesToggle
         BulletTime.ForceEnd();
     }
 
-    // On the short line under the crosshair, and always in the console too (not just a fallback for
-    // when the on-screen message fails), so the Absurd Moves on/off state is never just text that
-    // scrolled past.
+    // On the short line under the crosshair, in the event log, and always in the console too (not
+    // just a fallback for when the on-screen message fails), so the Absurd Moves on/off state is
+    // never just text that scrolled past - same as InfiniteToggles' infinite health/ammo announcements.
     private static void Announce(string message)
     {
         MessageHelper.Show(message, MessageType.Center, 3f);
+        MessageHelper.Show(message, MessageType.EventLog);
         Plugin.Logger.LogInfo($"GTFO.EZ.AbsurdMoves: {message}");
     }
 }

@@ -28,7 +28,8 @@ Every move below is off at the start of a level. **Press Home** to turn Absurd M
 again to turn it off. Turning it off cancels whatever's in progress right away - an in-flight dodge
 stops, a running bullet time snaps back to normal speed, a pound/mantle/slide/charged high jump
 resets - and none of them start again until Home is pressed again. The state (and whichever move was
-cancelled) is announced on-screen and in the console.
+cancelled) is announced on-screen, in the event log and in the console - same as the Insert/Delete
+infinite health and ammo toggles.
 
 | Setting | Default | What it does |
 |---|---|---|
