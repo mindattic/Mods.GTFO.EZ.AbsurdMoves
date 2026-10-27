@@ -13,7 +13,7 @@ public class Plugin : BasePlugin
 {
     public const string GUID = "MindAttic.GTFO.EZ.AbsurdMoves";
     public const string NAME = "GTFO.EZ.AbsurdMoves";
-    public const string VERSION = "17.0.0";
+    public const string VERSION = "18.0.0";
 
     internal static ManualLogSource Logger = null!;
 
@@ -40,7 +40,6 @@ public class Plugin : BasePlugin
         FireWhileRunning.Bind(Config);
         GroundPound.Bind(Config);
         Mantle.Bind(Config);
-        HighJump.Bind(Config);
         ConfigMigrations.Apply(Config); // after every Bind: stale old defaults move to the new ones
 
         ClassInjector.RegisterTypeInIl2Cpp<LoopSounds>();

@@ -21,8 +21,8 @@ internal static class Moves
         return forward.sqrMagnitude > 0.0001f ? forward.normalized : Vector3.forward;
     }
 
-    // Fall damage is measured from where the fall started, so a double jump or high jump moves that
-    // start along with you: you only take damage for what you drop after it ends.
+    // Fall damage is measured from where the fall started, so a double jump moves that start
+    // along with you: you only take damage for what you drop after it ends.
     internal static void ResetFallStart(PlayerAgent agent, PlayerLocomotion loc)
     {
         var fall = loc.CurrentState?.TryCast<PLOC_Fall>();
@@ -46,7 +46,6 @@ internal static class Moves
         Mantle.Reset();
         AirMoves.Reset();
         Slide.Reset();
-        HighJump.Reset();
     }
 
     [HarmonyPostfix]
@@ -74,7 +73,6 @@ internal static class Moves
             Mantle.Tick(agent, __instance);
             if (!Mantle.Active) AirMoves.Tick(agent, __instance);
             Slide.Tick(agent, __instance);
-            HighJump.Tick(agent, __instance);
         }
         catch (Exception e)
         {

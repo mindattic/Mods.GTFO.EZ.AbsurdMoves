@@ -5,8 +5,8 @@ and underscores, so they can't contain a period.)*
 
 GTFO.EZ.AbsurdMoves is a GTFO.EZ companion mod, built on [GTFO.EZ](https://github.com/mindattic/GTFO.EZ)'s core: it carries GTFO.EZ's shared code (the Insert/Delete infinite health and ammo toggles, and MessageHelper, which puts on-screen messages wherever they fit) and works with or without GTFO.EZ installed. It was called GTFO.AbsurdMoves before its first release.
 
-A BepInEx plugin for GTFO that adds new player moves: double jump, high
-jump, ground pound, mantling, slide, dodge and bullet time, plus firing on the move.
+A BepInEx plugin for GTFO that adds new player moves: double jump, ground
+pound, mantling, slide, dodge and bullet time, plus firing on the move.
 No game files are shipped or edited.
 
 **Every move has its own on/off switch, and its numbers can be retuned,** in the config file
@@ -24,10 +24,10 @@ The file's first entry switches the whole mod off, for a mod manager profile tha
 
 Every move below is off at the start of a level. **Press Home** to turn Absurd Moves on; press it
 again to turn it off. Turning it off cancels whatever's in progress right away - an in-flight dodge
-stops, a running bullet time snaps back to normal speed, a pound/mantle/slide/charged high jump
-resets - and none of them start again until Home is pressed again. The state (and whichever move was
-cancelled) is announced on-screen, in the event log and in the console - same as the Insert/Delete
-infinite health and ammo toggles.
+stops, a running bullet time snaps back to normal speed, a pound/mantle/slide resets - and none of
+them start again until Home is pressed again. The state (and whichever move was cancelled) is
+announced on-screen, in the event log and in the console - same as the Insert/Delete infinite
+health and ammo toggles.
 
 | Setting | Default | What it does |
 |---|---|---|
@@ -39,7 +39,6 @@ infinite health and ammo toggles.
 |---|---|---|
 | [Double jump](#double-jump) | In the air, press **Jump** again | `[Double Jump] Double Jump Enabled` |
 | [Ground pound](#ground-pound) | In the air, high enough up, press **Crouch** | `[Ground Pound] Ground Pound Enabled` |
-| [High jump](#high-jump) | Stay crouched on the ground until you flash, then press **Jump** | `[High Jump] High Jump Enabled` |
 | [Mantling](#mantling) | Jump at a ledge no higher than your eyes, holding **forward** | `[Mantling] Mantling Enabled` |
 | [Slide](#slide) | Press **Crouch** while sprinting | `[Slide] Slide Enabled` |
 | [Dodge](#dodge) | Hold **Shift** and double-tap **W/A/S/D** | `[Dodge] Dodge Enabled` |
@@ -64,20 +63,6 @@ Fall damage counts from where the double jump started.
 |---|---|---|
 | `Double Jump Enabled` | true | Turns the double jump on or off. |
 | `Second Jump Height Multiplier` | 1.5 | Scales the second jump's upward speed against a ground jump (1 = the same; height grows with the square). |
-
-## High jump
-
-Stay crouched on the ground until you start to flash (a white light blinking at you, after 1 second),
-then press Jump: you're launched straight up about 10 meters. It's the game's own jump with the upward
-speed raised, and the landing takes no fall damage. Standing up before you jump drops the charge, and a slide never charges it.
-
-### `[High Jump]`
-
-| Setting | Default | What it does |
-|---|---|---|
-| `High Jump Enabled` | true | Turns the high jump on or off. |
-| `Charge Time (seconds)` | 1 | How long you stay crouched before you flash and it's ready. |
-| `Height (meters)` | 10 | How high it launches you. |
 
 ## Ground pound
 

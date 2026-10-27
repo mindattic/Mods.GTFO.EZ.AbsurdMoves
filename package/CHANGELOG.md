@@ -1,5 +1,11 @@
 # Changelog
 
+## v18
+
+- **Removed: high jump.** It never reliably launched and the double jump already covers getting up
+  high, so the crouch-charge, the flash light and `[High Jump]` are gone. An existing `.cfg`'s
+  `[High Jump]` section stays as leftover lines that do nothing.
+
 ## v17
 
 - `GTFO.EZ.Shared` submodule bump: `SharedOwner.Order` no longer lists `GTFO.CrashTestDummies`,

@@ -79,3 +79,4 @@ _Nothing recorded yet._
 | GAM-T56 | 2026-10-24 | chore | closed | Cut the v16 release: Home replaces End as the Absurd Moves toggle, pull in GTFO.EZ.Shared's Insert/Delete swap (submodule bump), fix GTFO.* wording, rebuild and repackage dist/ | package/manifest.json |
 | GAM-T57 | 2026-10-24 | chore | closed | Cut the v17 release: bump submodule to GTFO.EZ.Shared's Order cleanup, join CrashTestDummies/SkipDrop into the vN scheme, bump VERSION/manifest, rebuild and repackage dist/ | package/manifest.json |
 | GAM-T58 | 2026-10-26 | fix | closed | Absurd Moves' own on/off toggle message now also posts to the event log, matching the Insert/Delete infinite health and ammo toggles instead of only the crosshair line and console | MovesToggle.cs |
+| GAM-T59 | 2026-10-26 | chore | closed | Cut the v18 release: remove high jump (never reliably launched; double jump already covers getting up high), bump VERSION/manifest, rebuild and repackage dist/ | HighJump.cs |

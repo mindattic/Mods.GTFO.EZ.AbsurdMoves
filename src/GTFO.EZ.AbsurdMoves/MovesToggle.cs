@@ -8,10 +8,9 @@ namespace GTFO.EZ.AbsurdMoves;
 /// <summary>
 /// Absurd Moves as a whole is a toggle (<see cref="key"/>, Home by default), off at the start of
 /// every level. The first press turns it on, so the dodge, bullet time, fire mid-air/while running,
-/// ground pound, mantle, double jump, slide and high jump all start working; the second press turns
-/// it off again - cancelling whatever's in progress (a pound, a mantle, a slide, a charged high
-/// jump, an in-flight dodge, a running bullet time) and letting none of them start again until it's
-/// back on.
+/// ground pound, mantle, double jump and slide all start working; the second press turns it off
+/// again - cancelling whatever's in progress (a pound, a mantle, a slide, an in-flight dodge, a
+/// running bullet time) and letting none of them start again until it's back on.
 /// </summary>
 internal static class MovesToggle
 {
@@ -23,8 +22,8 @@ internal static class MovesToggle
     {
         key = config.Bind("Moves Toggle", "ToggleAbsurdMovesKey", KeyCode.Home,
             "Switches every Absurd Move on or off, all at once. Off: the dodge, bullet time, fire mid-air/while " +
-            "running, ground pound, mantle, double jump, slide and high jump all do nothing, and whichever of " +
-            "them is in progress is cancelled right away. Off at the start of every level.");
+            "running, ground pound, mantle, double jump and slide all do nothing, and whichever of them is in " +
+            "progress is cancelled right away. Off at the start of every level.");
     }
 
     // Called once a frame, from Moves.Postfix, for the local player's own locomotion only.
@@ -46,7 +45,6 @@ internal static class MovesToggle
         Mantle.Reset();
         AirMoves.Reset();
         Slide.Reset();
-        HighJump.Reset();
         DodgeRunner.Cancel();
         BulletTime.ForceEnd();
     }
