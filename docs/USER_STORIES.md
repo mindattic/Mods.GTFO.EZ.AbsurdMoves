@@ -1,6 +1,6 @@
 ---
 codex: 1
-project: GTFO.EZ.AbsurdMoves
+project: Mods.GTFO.EZ.AbsurdMoves
 code: GAM
 layer: stories
 status: living
@@ -8,7 +8,7 @@ updated: 2026-10-18
 ---
 <!-- GENERATED from MindAttic.Tickets/data/Tickets.db by `tickets db render`. Do not edit: this file is rewritten from the database; change stories and tickets with the tickets CLI. -->
 
-# GTFO.EZ.AbsurdMoves — User Stories
+# Mods.GTFO.EZ.AbsurdMoves — User Stories
 > ✅ done (shipped & tested) · 🟡 partial · ⬜ planned. Every ✅ cites the test.
 
 ## Priority backlog
@@ -80,3 +80,4 @@ _Nothing recorded yet._
 | GAM-T57 | 2026-10-24 | chore | closed | Cut the v17 release: bump submodule to GTFO.EZ.Shared's Order cleanup, join CrashTestDummies/SkipDrop into the vN scheme, bump VERSION/manifest, rebuild and repackage dist/ | package/manifest.json |
 | GAM-T58 | 2026-10-26 | fix | closed | Absurd Moves' own on/off toggle message now also posts to the event log, matching the Insert/Delete infinite health and ammo toggles instead of only the crosshair line and console | MovesToggle.cs |
 | GAM-T59 | 2026-10-26 | chore | closed | Cut the v18 release: remove high jump (never reliably launched; double jump already covers getting up high), bump VERSION/manifest, rebuild and repackage dist/ | HighJump.cs |
+| GAM-T60 | 2026-11-01 | chore | open | Rename repo to Mods.GTFO.EZ.AbsurdMoves for mod organization (GitHub + folder + refs) | — |
