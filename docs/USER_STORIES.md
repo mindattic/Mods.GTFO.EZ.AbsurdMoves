@@ -81,3 +81,4 @@ _Nothing recorded yet._
 | GAM-T58 | 2026-10-26 | fix | closed | Absurd Moves' own on/off toggle message now also posts to the event log, matching the Insert/Delete infinite health and ammo toggles instead of only the crosshair line and console | MovesToggle.cs |
 | GAM-T59 | 2026-10-26 | chore | closed | Cut the v18 release: remove high jump (never reliably launched; double jump already covers getting up high), bump VERSION/manifest, rebuild and repackage dist/ | HighJump.cs |
 | GAM-T60 | 2026-11-01 | chore | closed | Rename repo to Mods.GTFO.EZ.AbsurdMoves for mod organization (GitHub + folder + refs) | 673575f33bb50688c875ae7772a72695e158ed01 |
+| GAM-T61 | 2026-11-01 | chore | closed | Cut v19 release: bump VERSION/manifest, rebuild and repackage dist/ | 6318e98 on main; dotnet build 0 warnings/0 errors; dist/GTFO.EZ.AbsurdMoves-19.0.0.zip built |
