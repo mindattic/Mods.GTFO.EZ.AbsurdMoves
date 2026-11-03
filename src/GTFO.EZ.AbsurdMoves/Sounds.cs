@@ -65,7 +65,12 @@ internal sealed class LoopSounds : MonoBehaviour
         {
             // Touched every frame: a sound that can't play is given up on, not retried (and leaked) each frame.
             if (failed.Add(startEvent)) Plugin.Logger.LogWarning($"GTFO.EZ.AbsurdMoves couldn't run loop sound '{startEvent}': {e.Message}");
-            loops.Remove(key);
+            // An existing loop that failed to update is dropped too: stop it, or it plays on forever.
+            if (created == null && loops.Remove(key, out var orphan))
+            {
+                try { orphan.Player.Stop(); orphan.Player.Recycle(); } catch { }
+            }
+            else loops.Remove(key);
             try { created?.Recycle(); } catch { }
         }
     }

@@ -54,23 +54,37 @@ internal static class FireWhileRunningPose
     private const float RaiseRate = 6f;
 
     private static float _lastTrigger = -10f;
+    // Whether the last frame left the holder's running flag cleared mid-sprint: switching the
+    // feature (or Absurd Moves) off then has to set it back, since the run state only sets it on entry.
+    private static bool _raised;
 
     [HarmonyPrefix]
     private static void Prefix(FirstPersonItemHolder __instance)
     {
         try
         {
-            if (!MovesToggle.Active || !FireWhileRunning.Enabled.Value) return;
             var owner = __instance.m_owner;
             if (owner == null || !owner.IsLocallyOwned || owner.Owner == null || owner.Owner.IsBot) return;
             var loc = owner.Locomotion;
-            if (loc == null || loc.m_currentStateEnum != Player.PlayerLocomotion.PLOC_State.Run) return;
+            var running = loc != null && loc.m_currentStateEnum == Player.PlayerLocomotion.PLOC_State.Run;
+            if (!MovesToggle.Active || !FireWhileRunning.Enabled.Value)
+            {
+                if (_raised && running) __instance.IsRunning = true;
+                _raised = false;
+                return;
+            }
+            if (!running)
+            {
+                _raised = false; // leaving the run state cleared the flag itself
+                return;
+            }
 
             var gun = __instance.WieldedItem?.TryCast<BulletWeapon>() != null;
             if (gun && Moves.InPlay && InputMapper.GetButton.Invoke(InputAction.Fire, eFocusState.FPS)) _lastTrigger = Time.time;
             var raised = gun && Time.time - _lastTrigger < RaisedFor;
 
             __instance.IsRunning = !raised;
+            _raised = raised;
             if (!raised) return;
             __instance.RunInertia = 0f;
             __instance.m_runWeight = Mathf.MoveTowards(__instance.m_runWeight, 0f, Time.deltaTime * RaiseRate);

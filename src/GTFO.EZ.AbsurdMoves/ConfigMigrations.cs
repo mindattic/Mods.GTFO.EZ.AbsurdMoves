@@ -17,6 +17,7 @@ internal static class ConfigMigrations
     private static readonly (int Version, string Section, string Key, object OldDefault)[] DefaultMigrations =
     {
         (1, "Slide", "Slide Duration (seconds)", 1.2f), // v14: twice the slide
+        (2, "Moves Toggle", "ToggleAbsurdMovesKey", UnityEngine.KeyCode.End), // v16: End -> Home (AbsurdWeapons took End)
     };
 
     // After every setting is bound.
