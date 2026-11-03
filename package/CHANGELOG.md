@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- **A v15 config's End toggle now migrates to Home.** v16 moved the Absurd Moves toggle to Home, but
+  a config last saved by v15 kept `End`, which collides with GTFO.EZ.AbsurdWeapons' End toggle. It
+  is rewritten to `Home` on load.
+- **Turning Absurd Moves (or Fire While Running) off mid-sprint-fire restores the sprint gun pose.**
+  The first-person weapon no longer stays in its aim pose for the rest of the sprint.
+- **A looping sound that loses its position update is now stopped** instead of being forgotten and
+  playing forever.
+- The Thunderstore description names Home (not End) as the toggle key.
+
 ## v19
 
 - Moves in step with the GTFO.EZ family's version number (GTFO.EZ, GTFO.EZ.AbsurdWeapons,
