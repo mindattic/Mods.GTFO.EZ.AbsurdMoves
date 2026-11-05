@@ -11,6 +11,10 @@
   playing forever.
 - The Thunderstore description names Home (not End) as the toggle key.
 
+## v20
+
+- Dependency bump: `BepInExPack_GTFO` 3.2.3 to 3.2.4.
+
 ## v19
 
 - Moves in step with the GTFO.EZ family's version number (GTFO.EZ, GTFO.EZ.AbsurdWeapons,
