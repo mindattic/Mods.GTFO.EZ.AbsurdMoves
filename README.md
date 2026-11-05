@@ -179,10 +179,10 @@ gun is never lowered in the first place.
 
 **Insert** toggles infinite health (no damage to you; bots and teammates are unaffected) and
 **Delete** infinite ammo (every gun and tool stays full, no reloads), each announced in the event
-log and always in the console too. Both start off. They're the same two keys GTFO.EZ, its Absurd
-companions and GTFO.CrashTestDummies all have, from one shared copy of the code written in GTFO.EZ;
-with several of the mods installed, only one answers, so a press never toggles
-twice.
+log and always in the console too. Both start off. They're the same two keys GTFO.EZ and its Absurd
+companions all have, from one shared copy of the code written in GTFO.EZ; with several of the mods
+installed, only one answers, so a press never toggles twice. (GTFO.CrashTestDummies dropped
+Insert/Delete, and this shared code, in its own v17.)
 
 ## Compatibility
 
@@ -206,7 +206,7 @@ Thunderstore requires `manifest.json`'s `version_number` to be strict `x.y.z`, s
 The GTFO.EZ family - GTFO.EZ, GTFO.EZ.AbsurdWeapons, GTFO.EZ.AbsurdMoves and GTFO.EZ.AbsurdItems -
 shares one version number, so a matching set is easy to spot: the companions' first release is
 **v13**, in step with GTFO.EZ (not v1), and every release of the family bumps all four together
-(current: v17).
+(current: v20).
 
 ## Building
 

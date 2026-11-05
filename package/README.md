@@ -177,10 +177,10 @@ gun is never lowered in the first place.
 
 **Insert** toggles infinite health (no damage to you; bots and teammates are unaffected) and
 **Delete** infinite ammo (every gun and tool stays full, no reloads), each announced in the event
-log and always in the console too. Both start off. They're the same two keys GTFO.EZ, its Absurd
-companions and GTFO.CrashTestDummies all have, from one shared copy of the code written in GTFO.EZ;
-with several of the mods installed, only one answers, so a press never toggles
-twice.
+log and always in the console too. Both start off. They're the same two keys GTFO.EZ and its Absurd
+companions all have, from one shared copy of the code written in GTFO.EZ; with several of the mods
+installed, only one answers, so a press never toggles twice. (GTFO.CrashTestDummies dropped
+Insert/Delete, and this shared code, in its own v17.)
 
 ## Compatibility
 
