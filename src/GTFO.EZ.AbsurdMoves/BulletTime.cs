@@ -12,12 +12,15 @@ namespace GTFO.EZ.AbsurdMoves;
 /// easing back up to full speed when it's over. Its own timing runs on real time, so the duration
 /// and cooldown don't stretch while time is slowed. The world's sound drops to a hollow, muffled mix
 /// with a deep boom going in and a heartbeat under it. A press while it's running or cooling down
-/// does nothing. The trigger is broadcast so every player's game slows together; once the cooldown is
-/// over, the event log says it's ready again.
+/// does nothing. The trigger is broadcast, carrying the triggerer's own duration and time scale, so
+/// every player's game slows together, by the same amount for the same time, and everyone's event log
+/// says who triggered it; once the cooldown is over, the event log says it's ready again.
 /// </summary>
 internal sealed class BulletTime : MonoBehaviour
 {
-    private const string StartEvent = "MindAttic.GTFO.EZ.AbsurdMoves.BulletTime";
+    // v2: the message now carries the duration and time scale; a new name so an older install never
+    // reads the bigger message as the old empty one (or the other way round).
+    private const string StartEvent = "MindAttic.GTFO.EZ.AbsurdMoves.BulletTime.v2";
     private const float RampIn = 0.4f;
     private const float RampOut = 0.8f;
 
@@ -38,6 +41,8 @@ internal sealed class BulletTime : MonoBehaviour
     private static float readyAt;
     // The physics step and time scale as they were before bullet time, put back after it.
     private static float baseFixedDelta = -1f, baseTimeScale = 1f;
+    // The running bullet time's length and time scale: the triggerer's settings, not this machine's.
+    private static float activeDuration = 5f, activeScale = 0.3f;
     // Set when bullet time ends; the event log says so once the cooldown is over.
     private static bool announceReady;
 
@@ -66,11 +71,11 @@ internal sealed class BulletTime : MonoBehaviour
     // speed while the others are slowed.
     // The handler runs inside GTFO-API's prefix on the game's packet receive, so nothing escapes it
     // (see GroundPound.Init); a start that fails halfway is ended so nothing stays slowed or muffled.
-    internal static void Init() => RemoteEvents.Register<Trigger>(StartEvent, (_, _) =>
+    internal static void Init() => RemoteEvents.Register<Trigger>(StartEvent, (sender, trigger) =>
     {
         try
         {
-            Begin(fromTeammate: true);
+            if (Begin(trigger.Duration, trigger.TimeScale, fromTeammate: true)) AnnounceTrigger(sender);
         }
         catch (Exception e)
         {
@@ -105,7 +110,11 @@ internal sealed class BulletTime : MonoBehaviour
                 return;
             }
 
-            if (KeyTapped() && Begin()) NetworkAPI.InvokeEvent(StartEvent, new Trigger());
+            if (KeyTapped() && Begin(duration.Value, timeScale.Value))
+            {
+                NetworkAPI.InvokeEvent(StartEvent, new Trigger(activeDuration, activeScale));
+                AnnounceTrigger(SNetwork.SNet.LocalPlayer != null ? SNetwork.SNet.LocalPlayer.Lookup : 0UL);
+            }
 
             if (Active) Tick();
             else if (announceReady && Time.unscaledTime >= readyAt)
@@ -151,9 +160,20 @@ internal sealed class BulletTime : MonoBehaviour
         if (!focused) armed = false;
     }
 
-    private static bool Begin(bool fromTeammate = false)
+    // "Bullet time - triggered by Bob" in everyone's event log, the triggerer's own included.
+    private static void AnnounceTrigger(ulong lookup)
+    {
+        var text = $"Bullet time - triggered by {MovesToggle.PlayerName(lookup)}";
+        if (!MessageHelper.Show(text, MessageType.EventLog)) Plugin.Logger.LogInfo($"GTFO.EZ.AbsurdMoves: {text}");
+    }
+
+    // The duration and time scale are the triggerer's (sanitised, since a teammate's come off the
+    // network): every machine runs the same bullet time whatever its own config says.
+    private static bool Begin(float seconds, float scale, bool fromTeammate = false)
     {
         if (Active || (!fromTeammate && Time.unscaledTime < readyAt)) return false;
+        activeDuration = float.IsFinite(seconds) ? Mathf.Clamp(seconds, RampIn + RampOut, 60f) : RampIn + RampOut;
+        activeScale = float.IsFinite(scale) ? Mathf.Clamp(scale, 0.05f, 1f) : 1f;
         startedAt = Time.unscaledTime;
         baseTimeScale = Time.timeScale > 0f ? Time.timeScale : 1f;
         baseFixedDelta = Time.fixedDeltaTime;
@@ -173,7 +193,7 @@ internal sealed class BulletTime : MonoBehaviour
     // 0 -> 1 easing down over the ramp-in, 1 for the body, back to 0 easing up over the ramp-out.
     private static float Strength(float elapsed)
     {
-        var total = Mathf.Max(duration.Value, RampIn + RampOut);
+        var total = activeDuration;
         if (elapsed < RampIn) return Mathf.SmoothStep(0f, 1f, elapsed / RampIn);
         if (elapsed > total - RampOut) return Mathf.SmoothStep(0f, 1f, (total - elapsed) / RampOut);
         return 1f;
@@ -182,7 +202,7 @@ internal sealed class BulletTime : MonoBehaviour
     private static void Tick()
     {
         var elapsed = Time.unscaledTime - startedAt;
-        if (elapsed >= Mathf.Max(duration.Value, RampIn + RampOut))
+        if (elapsed >= activeDuration)
         {
             End();
             return;
@@ -190,7 +210,7 @@ internal sealed class BulletTime : MonoBehaviour
         var strength = Strength(elapsed);
 
         // The whole game clock, with the physics step scaled along so movement stays smooth.
-        var scale = baseTimeScale * Mathf.Lerp(1f, Mathf.Clamp(timeScale.Value, 0.05f, 1f), strength);
+        var scale = baseTimeScale * Mathf.Lerp(1f, activeScale, strength);
         Time.timeScale = scale;
         Time.fixedDeltaTime = baseFixedDelta * scale / baseTimeScale;
 
@@ -218,11 +238,11 @@ internal sealed class BulletTime : MonoBehaviour
             Sounds.Play(exitSound.Value, player.Position);
     }
 
-    // GTFO-API sends structs as raw bytes; this one carries nothing but needs a size.
-#pragma warning disable CS0649
+    // GTFO-API sends structs as raw bytes: the triggerer's duration (real seconds) and time scale.
     private readonly struct Trigger
     {
-        public readonly byte Unused;
+        public readonly float Duration, TimeScale;
+
+        public Trigger(float duration, float timeScale) => (Duration, TimeScale) = (duration, timeScale);
     }
-#pragma warning restore CS0649
 }

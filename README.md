@@ -29,7 +29,8 @@ again to turn it off. Turning it off cancels whatever's in progress right away -
 stops, a running bullet time snaps back to normal speed, a pound/mantle/slide resets - and none of
 them start again until Home is pressed again. The state (and whichever move was cancelled) is
 announced on-screen, in the event log and in the console - same as the Insert/Delete infinite
-health and ammo toggles.
+health and ammo toggles. The toggle is your own, but the team hears about it: every teammate's event
+log says "Bob: Absurd Moves ON" (or OFF).
 
 | Setting | Default | What it does |
 |---|---|---|
@@ -140,7 +141,9 @@ projectiles alike. It eases into slow motion over 0.4 s, holds, then eases back 
 Once its cooldown is over, the event log on the left says
 "Bullet time ready". The sound
 drops to a hollow, muffled mix, with a deep boom going in and a heartbeat underneath. It's broadcast,
-so the host slows the enemies for the whole team. Needs the GTFO-API plugin.
+so the host slows the enemies for the whole team, and everyone's event log says "Bullet time -
+triggered by Bob". Every player's game runs the triggerer's `DurationSeconds` and `TimeScale`, not its
+own, so the whole team slows by the same amount for the same time. Needs the GTFO-API plugin.
 
 ### `[Bullet Time]`
 

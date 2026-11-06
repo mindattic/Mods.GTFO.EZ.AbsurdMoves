@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Absurd Moves on/off is announced to the team.** Pressing Home still switches only your own moves,
+  but every teammate's event log now says "Bob: Absurd Moves ON" (or OFF).
+- **Bullet time is the same for everyone and says who started it.** The broadcast now carries the
+  triggerer's duration and time scale, and every player's game uses those instead of its own config,
+  so nobody's game speeds back up early or slows by a different amount. Everyone's event log says
+  "Bullet time - triggered by Bob". (The network event was renamed, so an older install in the same
+  lobby no longer syncs bullet time with this one.)
 - **A v15 config's End toggle now migrates to Home.** v16 moved the Absurd Moves toggle to Home, but
   a config last saved by v15 kept `End`, which collides with GTFO.EZ.AbsurdWeapons' End toggle. It
   is rewritten to `Home` on load.

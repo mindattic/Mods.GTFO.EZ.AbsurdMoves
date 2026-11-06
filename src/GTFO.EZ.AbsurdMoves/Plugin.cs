@@ -47,6 +47,7 @@ public class Plugin : BasePlugin
         ClassInjector.RegisterTypeInIl2Cpp<PoundPushes>();
         BulletTime.Init();
         GroundPound.Init();
+        MovesToggle.Init();
 
         new Harmony(GUID).PatchAll();
         AddComponent<LoopSounds>();
