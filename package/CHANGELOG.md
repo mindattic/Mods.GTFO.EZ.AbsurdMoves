@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 21.0.0
 
 - **Absurd Moves on/off is announced to the team.** Pressing Home still switches only your own moves,
   but every teammate's event log now says "Bob: Absurd Moves ON" (or OFF).

@@ -1,6 +1,6 @@
 {
   "name": "GtfoEZAbsurdMoves",
-  "version_number": "20.0.0",
+  "version_number": "21.0.0",
   "website_url": "https://github.com/mindattic/GTFO.EZ.AbsurdMoves",
   "description": "GTFO.EZ companion: double jump, mantling, ground pound shockwave, sprint slide, Shift+WASD dodge, Alt bullet time, fire mid-air and while sprinting. Home toggles every move; each is tunable.",
   "dependencies": [
