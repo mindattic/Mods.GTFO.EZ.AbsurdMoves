@@ -82,3 +82,11 @@ _Nothing recorded yet._
 | GAM-T59 | 2026-10-26 | chore | closed | Cut the v18 release: remove high jump (never reliably launched; double jump already covers getting up high), bump VERSION/manifest, rebuild and repackage dist/ | HighJump.cs |
 | GAM-T60 | 2026-11-01 | chore | closed | Rename repo to Mods.GTFO.EZ.AbsurdMoves for mod organization (GitHub + folder + refs) | 673575f33bb50688c875ae7772a72695e158ed01 |
 | GAM-T61 | 2026-11-01 | chore | closed | Cut v19 release: bump VERSION/manifest, rebuild and repackage dist/ | 6318e98 on main; dotnet build 0 warnings/0 errors; dist/GTFO.EZ.AbsurdMoves-19.0.0.zip built |
+| GAM-T62 | 2026-11-02 | fix | closed | Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02) | — |
+| GAM-T63 | 2026-11-02 | fix | closed | Fix the open items the 2026-11-02 bughunt left for decision (CHANGELOG unreleased entry) | — |
+| GAM-T64 | 2026-11-05 | chore | open | Bump BepInExPack_GTFO dependency to 3.2.4 and release v20.0.0 | — |
+| GAM-T65 | 2026-11-05 | docs | open | Audit README(s) for accuracy against current code/config and v20 release | — |
+| GAM-T66 | 2026-11-06 | fix | closed | Team-visible messages: Moves toggle ON/OFF and 'bullet time triggered by X' shown to everyone; bullet time uses the triggerer's duration/time scale sent in the message | G.EZ-T122 9b7ea6b |
+| GAM-T67 | 2026-11-06 | chore | closed | Bump to v21.0.0 and build the dist zip for the v21 release | — |
+| GAM-T68 | 2026-11-06 | chore | closed | Publish v21.0.0 to Thunderstore | 7220e95 |
+| GAM-T69 | 2026-11-06 | feature | closed | /publish: bumps all four GTFO.EZ mods in lockstep, builds each dist zip, publishes to Thunderstore in dependency order, commits and pushes | c81f6ac |
