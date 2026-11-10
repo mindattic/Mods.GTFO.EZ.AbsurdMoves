@@ -90,3 +90,4 @@ _Nothing recorded yet._
 | GAM-T67 | 2026-11-06 | chore | closed | Bump to v21.0.0 and build the dist zip for the v21 release | — |
 | GAM-T68 | 2026-11-06 | chore | closed | Publish v21.0.0 to Thunderstore | 7220e95 |
 | GAM-T69 | 2026-11-06 | feature | closed | /publish: bumps all four GTFO.EZ mods in lockstep, builds each dist zip, publishes to Thunderstore in dependency order, commits and pushes | c81f6ac |
+| GAM-T70 | 2026-11-10 | chore | closed | Crash recovery: commit the command-catalog sync (.agent/commands/*.md) and regenerated docs/USER_STORIES.md left uncommitted by the session crash | — |
