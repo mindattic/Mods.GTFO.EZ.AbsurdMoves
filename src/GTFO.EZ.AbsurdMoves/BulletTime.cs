@@ -112,7 +112,15 @@ internal sealed class BulletTime : MonoBehaviour
 
             if (KeyTapped() && Begin(duration.Value, timeScale.Value))
             {
-                NetworkAPI.InvokeEvent(StartEvent, new Trigger(activeDuration, activeScale));
+                try
+                {
+                    NetworkAPI.InvokeEvent(StartEvent, new Trigger(activeDuration, activeScale));
+                }
+                catch (Exception e)
+                {
+                    // Your own bullet time still runs if the team can't be told.
+                    Plugin.Logger.LogWarning($"GTFO.EZ.AbsurdMoves couldn't tell the team about bullet time: {e.Message}");
+                }
                 AnnounceTrigger(SNetwork.SNet.LocalPlayer != null ? SNetwork.SNet.LocalPlayer.Lookup : 0UL);
             }
 
