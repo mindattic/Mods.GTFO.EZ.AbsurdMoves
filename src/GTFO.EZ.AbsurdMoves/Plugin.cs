@@ -41,6 +41,7 @@ public class Plugin : BasePlugin
         GroundPound.Bind(Config);
         Mantle.Bind(Config);
         ConfigMigrations.Apply(Config); // after every Bind: stale old defaults move to the new ones
+        HostLevelSettings.Init(Config);
 
         ClassInjector.RegisterTypeInIl2Cpp<LoopSounds>();
         ClassInjector.RegisterTypeInIl2Cpp<BulletTime>();
