@@ -68,7 +68,7 @@ _Nothing recorded yet._
 | GAM-T45 | 2026-10-20 | fix | closed | A loop sound whose Post throws leaked a new CellSoundPlayer and logged a warning every frame it was touched (bullet time): the player is now recycled and the sound given up on (bughunt) | 1e49d20 |
 | GAM-T46 | 2026-10-20 | fix | closed | A slide (Crouch state, 2.4 s) charged the high jump (1 s), so Jump late in a slide launched 10 m straight up - a slide no longer charges it (bughunt; user decision) | 53d629f |
 | GAM-T47 | 2026-10-20 | docs | closed | Publish GTFO.EZ.AbsurdMoves docs to GitHub Pages via the shared Agency DocFX pipeline: run adopt-docs-site.ps1 (README.md as home page, docs/*.md as articles, API reference only where the code builds in CI), enable Pages with build_type=workflow, set the repo homepage URL, retire tools/build-readme.ps1 and README.htm, confirm the docs Actions run is green and https://mindattic.github.io/GTFO.EZ.AbsurdMoves/ returns 200. Depends on MAT-T8. | .github/workflows/docs.yml |
-| GAM-T48 | 2026-10-20 | chore | open | Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing | user request 2026-10-20: approved repo sweep gap-fill (resets the untracked v14 bughunt partial) |
+| GAM-T48 | 2026-10-20 | chore | closed | Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing | 8c3a217 |
 | GAM-T49 | 2026-10-21 | chore | closed | Add .prose; Update USER_STORIES.md | — |
 | GAM-T50 | 2026-10-22 | docs | closed | Update USER_STORIES.md | — |
 | GAM-T51 | 2026-10-24 | docs | closed | Update USER_STORIES.md | — |
@@ -84,10 +84,15 @@ _Nothing recorded yet._
 | GAM-T61 | 2026-11-01 | chore | closed | Cut v19 release: bump VERSION/manifest, rebuild and repackage dist/ | 6318e98 on main; dotnet build 0 warnings/0 errors; dist/GTFO.EZ.AbsurdMoves-19.0.0.zip built |
 | GAM-T62 | 2026-11-02 | fix | closed | Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02) | — |
 | GAM-T63 | 2026-11-02 | fix | closed | Fix the open items the 2026-11-02 bughunt left for decision (CHANGELOG unreleased entry) | — |
-| GAM-T64 | 2026-11-05 | chore | open | Bump BepInExPack_GTFO dependency to 3.2.4 and release v20.0.0 | — |
-| GAM-T65 | 2026-11-05 | docs | open | Audit README(s) for accuracy against current code/config and v20 release | — |
+| GAM-T64 | 2026-11-05 | chore | closed | Bump BepInExPack_GTFO dependency to 3.2.4 and release v20.0.0 | already done: 7663f01 + 26d7bc9 (v20.0.0, BepInExPack 3.2.4) |
+| GAM-T65 | 2026-11-05 | docs | closed | Audit README(s) for accuracy against current code/config and v20 release | already done: e96855c (README v20 audit) |
 | GAM-T66 | 2026-11-06 | fix | closed | Team-visible messages: Moves toggle ON/OFF and 'bullet time triggered by X' shown to everyone; bullet time uses the triggerer's duration/time scale sent in the message | G.EZ-T122 9b7ea6b |
 | GAM-T67 | 2026-11-06 | chore | closed | Bump to v21.0.0 and build the dist zip for the v21 release | — |
 | GAM-T68 | 2026-11-06 | chore | closed | Publish v21.0.0 to Thunderstore | 7220e95 |
 | GAM-T69 | 2026-11-06 | feature | closed | /publish: bumps all four GTFO.EZ mods in lockstep, builds each dist zip, publishes to Thunderstore in dependency order, commits and pushes | c81f6ac |
 | GAM-T70 | 2026-11-10 | chore | closed | Crash recovery: commit the command-catalog sync (.agent/commands/*.md) and regenerated docs/USER_STORIES.md left uncommitted by the session crash | — |
+| GAM-T71 | 2026-11-24 | fix | wont-do | Hunt the whole repo for real bugs with no time limit and fix every confirmed one | portfolio reset: open-ended bughunt loop, no concrete defect |
+| GAM-T72 | 2026-11-26 | fix | closed | BulletTime: a failed trigger broadcast cancels the player's own bullet time | 8c3a217 |
+| GAM-T73 | 2026-11-27 | feature | open | AbsurdMoves is documented and ready for the v22 family release | — |
+| GAM-T74 | 2026-11-27 | feature | open | Both READMEs describe the v22 behaviour and link the Thunderstore listing | — |
+| GAM-T75 | 2026-11-27 | docs | open | README.md and package/README.md match v22: move settings follow the host (HostLevelSettings, G.EZ-T145), the bullet-time broadcast fix (GAM-T72), current version lines, and a link to the Thunderstore listing GtfoEZAbsurdMoves | — |
